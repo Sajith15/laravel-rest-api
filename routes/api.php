@@ -15,12 +15,18 @@ use App\Http\Controllers\DeviceController;
 |
 */
 
+Route::get('list/{id?}',[DeviceController::class, 'list']);
+
+Route::get('search/{name?}',[DeviceController::class, 'search']);
+
+Route::get('count/{name?}',[DeviceController::class, 'count']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('list/{id?}',[DeviceController::class, 'list']);
-
 Route::post('add',[DeviceController::class, 'add']);
 
 Route::put('update',[DeviceController::class, 'update']);
+
+Route::delete('delete',[DeviceController::class, 'delete']);
