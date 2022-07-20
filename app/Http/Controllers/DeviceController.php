@@ -11,4 +11,24 @@ class DeviceController extends Controller
     {
         return $id?Device::find($id):Device::all();
     }
+
+    function add(Request $req) {
+        $device = new Device;
+
+        try {
+            $device->name = $req->name;
+            $device->model = $req->model;
+            $device->serial_number = $req->serial_number;
+
+            $result = $device->save();
+
+            if($result) {
+                return ["Result"=>"Data has been saved"];
+            } else {
+                throw new Exception($result);
+            }
+        } catch (Exception $e) {
+            return ["Error"=>$e->getMessage()];
+        }
+    }
 }
