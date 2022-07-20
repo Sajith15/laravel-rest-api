@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\simpleAPI;
+use App\Http\Controllers\DeviceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +15,8 @@ use App\Http\Controllers\simpleAPI;
 |
 */
 
-Route::get('data',[simpleAPI::class, 'getData']);
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('list',[DeviceController::class, 'list']);
